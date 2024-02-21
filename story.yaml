@@ -1,0 +1,238 @@
+metadata:
+  title: The lost treasure
+  author: Shweta K. Sisodiya
+  email: sksisodi@ucsc.edu
+initially:
+  description: >
+    This story begins long ago in the year 1009, when it was told that there was
+    hidden treasure was lost in the city of Dwarka, India. For hundreds of years
+    people mistakenly believed it would be easy to find, but they were wrong,
+    everyone that went to find the treasure never returned.Many years later a
+    boy named Sai heard this story from his grandfather, who heard it from his
+    grandfather. Actually for many generations this story had been passed on in
+    the Maram family. Sai's father thought it was all a lie, but Sai through
+    differently he believed the story was true but as he grew older he forgot
+    it. You are in December 2021, a year has passed since Sai resigned from his
+    last job and became a full time traveller.But sai is running out of savings,
+    soon he will have no money left. It was a cool spring morning; and the sun
+    was shining brightly as Sai walked down the street. Suddenly Sai remembered
+    the story of the lost treasure. Without delay Sai ran to his grandfather’s
+    house to ask about the treasure and Dwarka.
+  location: street
+  inventory:
+    - glasses
+locations:
+  street:
+    descriptions:
+      - text: >-
+          His grandfather, smiled wearily and opened a small silver chest.Sai
+          found a sheet of plain paper and a pair of oddly shaped green and red
+          shaded glasses in silver chest.Gandfather:- "But I don't want you to
+          go all alone, its too dangerous. Do you have any friend you can ask
+          for help?"
+      - text: >-
+          Sai is asking for your help in this tresure hunt. Do you want ot help
+          Sai ?
+        with:
+          - glasses
+    choices:
+      - text: 'Yes'
+        target: get_map
+        narration: >-
+          You meet his grandfather.He asks you to put on the weird glasses and
+          then look at the paper.
+        with:
+          - glasses
+      - text: 'No'
+        target: request
+        narration: This treasure hunt is very important to Sai and his family.
+        with:
+          - glasses
+    background:
+      - url_tags:
+          - outsideS
+  request:
+    descriptions:
+      - text: 'Sai:- "Please help me, I will share a part of the teasure with you."'
+        with:
+          - glasses
+      - text: >-
+          You spend all day looking for clues but found nothing. You realised
+          that this couldn't have been the right place because it was Jal Bhawan
+          was built recently and the story of lost treasure is with Maram family
+          for generations.
+        with:
+          - glasses
+          - map
+          - clue
+      - text: You both lost your one chance to Maram's Family treasure. Game Over.
+        with:
+          - map
+          - clue
+          - gameover
+    choices:
+      - text: 'Okay, I will'
+        target: get_map
+        narration: >-
+          You meet his grandfather.He asks you to put on the weird glasses and
+          then look at the paper.
+        with:
+          - glasses
+        without:
+          - map
+      - text: Lets go old Dwarka
+        target: Dwarka
+        narration: >-
+          The original city ofDwarka was built using gold. When the King (Lord
+          Krishna) died the entire city submerged under the water.You think the
+          clue is refer to the temple and hence you decide to go scuba diving in
+          Arabian Sea. 
+        with:
+          - glasses
+          - map
+          - clue
+      - text: Lets go old Dwarka
+        target: get_first_clue
+        narration: >-
+          You reach Dwarka on 10th December 2021. You still have almost one
+          month before it opens.You are in Dwarka but you don't know where to
+          go.Map has no clues for the starting location.  
+        with:
+          - glasses
+          - map
+        without:
+          - clue
+      - text: Lets go inside.
+        target: get_second_clue
+        narration: >-
+          From dark narrow passages you get inside the temple. As you going in
+          the water level is dropping.   
+        with:
+          - map
+          - end
+          
+    background:
+      - url_tags:
+          - insideS
+  get_first_clue:
+    provides:
+      - clue
+    descriptions:
+      - text: >-
+          You both agreed to look at the map again and check if you missed
+          anything. You notice that handles of glasses are different from each
+          other. You:- Wait! Sai I think something is different about these
+          handles. Sai:- Yes I thought because they are very old and some
+          mishandling caused it.
+      - text: >-
+          You try to fix it and notice a very fine paper attached inside the
+          connecting joints. You pull it out and it says:- "Shining star, oh
+          shining star
+              How silvery and glittery my jewels are
+              Find the treasure deep down below
+              A place of worship you should go". You think this your first clue to get to the starting point. You think its refering to temple of old Dwarka but Sai thinks it about Jal Bhawan a temple in new Dwarka. Sai:- "Where do you want go?"
+        with:
+          - glasses
+          - map
+    choices:
+      - text: Lets go to old Dwarka.
+        target: Dwarka
+        narration: >-
+          The original city ofDwarka was built using gold. When the King (Lord
+          Krishna) died the entire city submerged under the water.You think the
+          clue is refer to the temple and hence you decide to go scuba diving in
+          Arabian Sea. 
+        with:
+          - glasses
+          - map
+      - text: Lets go to Jal Bhawan.
+        target: request
+        narration: >-
+          Original city of Dwarka submerged under water thousands of years ago.
+          The present city of Dwarka is an attempt to preserve the history of
+          the place and for tourism.
+    background:
+      - url_tags:
+          - insideS
+  get_map:
+    provides:
+      - map
+    descriptions:
+      - text: >-
+          Sai immediately put the glasses on and the paper came to life! It was
+          the map to the lost treasure. Grandfather:- “There is a magic mirror
+          it will open on the 13th of January 2022. It only opens every 100
+          years”..
+    choices:
+      - text: Let's go to Dwarka.
+        narration: >-
+          You reach Dwarka on 10th December 2021. You still have almost one
+          month before the it opens.You are in Dwarka but you don't know where
+          to go.Map has no clues for the starting location.   
+        target: get_first_clue
+      - text: 'No, its to far. Sai doesn''t have job anymore but you do.'
+        narration: This treasure hunt is very important for Sai and his family.
+        target: request
+    background:
+      - url_tags:
+          - getmapS
+  Dwarka:
+    consumes:
+      - clue
+      - glasses
+    provides:
+      - end
+    descriptions:
+      - text: >-
+          The first clue took you to underwater caves, fountains and temples; it
+          seemed impossible to find temple. But your hard work paid off, you
+          found the lost city on the 21st of December 2021. From dark narrow
+          passages you got in the temple and found your next clue: "Pass your
+          reflection you will see The gate to the land of opportunity."
+      - text: >-
+          The only thing you can see dark narrow passages. You both are scared.
+          Sai :- " Do you think we can go in?"
+        with:
+          - glasses
+          - map
+      - text: >-
+          You think its your next clue to look at the map once again you try
+          take our your galsses
+
+            
+    choices:
+      - text: We have alreay come so far. Let's go inside.
+        narration: >-
+          From dark narrow passages you got in the temple . As you begin to more
+          forward you notice that the water level is dropping. 
+        target: get_second_clue
+      - text: No. I think it's too dangeous. Let's go back.
+        narration: >-
+          This treasure hunt is very important to Sai and Maram family.Sai:- "We
+          have alreay come so far. Next opening will be in next 100 years. Lets
+          do this"
+        target: request
+        
+    background:
+      - url_tags:
+          - deeperS
+  get_second_clue:
+    consumes:
+      - end
+    provides:
+      - clue
+      - gameover
+    descriptions:
+      - text: >-
+          Inside the temple. There is no water.You removed your masks and agreed
+          to look at the map again and check if you missed anything. You notice
+          that you dropped the weird glasses somewhere along the way. You can no
+          longer look the maps and find the clue. 
+    choices:
+      - text: You are lost.
+        target: request
+        narration: >-
+          You cannot read the map anymore.You started looking all over, you
+          realise if you decide to go back and come again. You might not make it
+          to its opening.
+ 

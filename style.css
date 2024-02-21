@@ -1,0 +1,24 @@
+
+@import url('https://fonts.googleapis.com/css?family=Dosis&display=swap');
+
+body {
+  font-family: 'Dosis', sans-serif;
+  max-width: 32em;
+}
+
+#descriptionsContainer {
+  margin-top: 1em;
+  border-top: thick solid black;
+  
+  margin-botton: 1em;
+  border-bottom: thin solid black;
+}
+
+.lit {
+  background-color: #ffc;  
+}
+
+.dim {
+  background-color: #000;
+  color: #aaa;
+}
